@@ -1,4 +1,8 @@
-an-hybrid-app
+A-hybrid-app
 =============
 
-An hybrid app that demonstrate how we can harness node.js in an ASP.NET MVC application 
+A sample web application that demonstrate how we can harness node.js in an ASP.NET MVC application.
+
+## Steps to Run
+
+###Node.js
