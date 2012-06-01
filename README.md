@@ -18,4 +18,4 @@ A sample web application that demonstrate how we can harness node.js in an ASP.N
 * Run the application from the Visual Studio (You can also host on your local iis server if you wish)
 
 
-For more details refer [my blog](http://sweettam.blogspot.com)
+For more details refer [my blog](http://sweettam.blogspot.in/2012/06/hybrid-application-using-aspnet-mvc3.html)
