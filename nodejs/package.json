@@ -1,0 +1,8 @@
+{
+	"author" : "Tamizhvendan S <tamizh88@gmail.com> (http://sweettam.blogspot.com)",
+	"name" : "an-hybrid-app",
+	"version" : "0.1.0",
+	"dependencies" : {
+		"socket.io" : "0.9.x"
+	}
+}

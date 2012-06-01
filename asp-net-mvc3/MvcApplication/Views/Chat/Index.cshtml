@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Chat server powered by Node.js";
+}
+
+<h3>Welcome to Chat powered by node.js</h3>
+
+<form action="#" id="userNameForm">
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" name="name" />
+    <button id="join">Join Chat</button>
+</form>
+
+<form action="#" id="chatForm" style="display:none">
+    <div>
+        <span id="status" style="color:Maroon"></span>
+        <ul id="messages" style="list-style:none;height:200px;width:450px;overflow-y:scroll;border:1px solid black">
+        
+        </ul>
+    </div>
+    <p>
+        <input id="message" type="text" style="width:450px;"/>
+        <button id="sendMessage">Send</button>
+    </p>
+</form>
+
+<script src="http://localhost:5555/socket.io/socket.io.js"></script>
+<script>
+    $(function () {
+
+        var socket;
+
+        $("#join").click(function (event) {
+            userName = $("#name").val();
+            $("#userNameForm").hide("slow", function () {
+                $("#chatForm").show("slow");
+            });
+            initChat(userName);
+            event.preventDefault();
+        });
+
+        $("#sendMessage").click(function (event) {
+            var message = $("#message").val();
+
+            $("#message").val('');
+            
+            if (socket)
+                socket.emit('message', message);
+            event.preventDefault();
+        });
+
+        function initChat(userName) {
+
+            socket = io.connect('http://localhost:5555'),
+                $status = $("#status");
+
+            socket.on("connect", function () {
+                socket.emit('join', { userName: userName });
+                $status.html("Connected to the chat room!");
+            });
+
+            socket.on("join", function (data) {
+                $status.html("<b>" + data.userName + "</b> joined the chat");
+
+            });
+
+            socket.on("message", function (data) {
+                $("<li>").html("<b>" + data.userName + "</b> : " + data.message)
+                         .appendTo("#messages"); ;
+            });
+
+            socket.on("unjoin", function (data) {
+                $status.html("<b>" + data.userName + "</b> has left the chat");
+            });
+
+        }
+    });
+</script>
