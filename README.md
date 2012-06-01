@@ -7,7 +7,7 @@ A sample web application that demonstrate how we can harness node.js in an ASP.N
 
 ###Node.js
 * Clone the repository
-* Navigate to node-js directory
+* Navigate to nodejs directory
 * run "npm install"
 * run "node app.js"
 
